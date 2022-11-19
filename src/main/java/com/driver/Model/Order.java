@@ -15,6 +15,7 @@ public class Order {
         time = Integer.parseInt(s1)*60;
         String s2 = deliveryTime.substring(3,5);
         time = time + Integer.parseInt(s2);
+        this.id = id;
         this.deliveryTime = time;
     }
 

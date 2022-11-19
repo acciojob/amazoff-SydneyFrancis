@@ -42,6 +42,8 @@ public class OrderService {
         HashMap<String,Order> orders = orderRepository.getOrders();
         Order order = orders.get(orderid);
         DeliveryPartner deliveryPartner = deliveryPartnerRepository.getPartners().get(deliveryid);
+        int n = deliveryPartner.getNumberOfOrders();
+        deliveryPartner.setNumberOfOrders(n+1);
         pair.put(order,deliveryPartner);
     }
 
@@ -54,13 +56,12 @@ public class OrderService {
     }
 
     public int getOrdersCountByPartner(String id){
-        int count = 0;
         for(Order order : pair.keySet()){
             if(pair.get(order).equals(id)){
-                count++;
+                return pair.get(order).getNumberOfOrders();
             }
         }
-        return count;
+        return 0;
     }
 
 
@@ -84,8 +85,7 @@ public class OrderService {
 
 
     public int getCountOfUnassignedOrders(){
-        HashMap<String,Order> orders = orderRepository.getOrders();
-        int ans = orders.size() - pair.size();
+        int ans = orderRepository.getCountOfUnassignedOrders() - pair.size();
         return ans;
     }
 

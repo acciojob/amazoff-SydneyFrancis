@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 @Repository
 public class OrderRepository {
-    HashMap<String,Order> orders = new HashMap<>();
+    private HashMap<String,Order> orders = new HashMap<>();
 
     public HashMap<String, Order> getOrders() {
         return orders;
@@ -19,9 +19,11 @@ public class OrderRepository {
 
 
 //    start
-    public void addOrder(Order order){
+    int count = 0;
+    public Order addOrder(Order order){
         String ID = order.getId();
         orders.put(ID,order);
+        return order;
     }
 
 
@@ -30,6 +32,11 @@ public class OrderRepository {
         return orders.get(id);
     }
 
+
+
+    public int getCountOfUnassignedOrders(){
+        return orders.size();
+    }
     public void deleteOrder(String orderID){
         orders.remove(orderID);
     }
