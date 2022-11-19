@@ -125,11 +125,16 @@ public class OrderService {
     }
 
     public void deletepartner(String partnerID){
+        HashMap<Order,DeliveryPartner> n = new HashMap<>();
         for(Order order : pair.keySet()){
-            if(pair.get(order).equals(partnerID)){
-                pair.remove(order);
+            if(!pair.get(order).equals(partnerID)){
+                n.put(order,pair.get(order));
             }
         }
+
+        this.pair = new HashMap<>(n);
+        HashMap<String,DeliveryPartner> partners = deliveryPartnerRepository.getPartners();
+        partners.remove(partnerID);
         deliveryPartnerRepository.deletePartnerById(partnerID);
     }
 
@@ -139,6 +144,8 @@ public class OrderService {
                 pair.remove(order);
             }
         }
+        HashMap<String,Order> orders = orderRepository.getOrders();
+        orders.remove(orderID);
         orderRepository.deleteOrder(orderID);
     }
 
