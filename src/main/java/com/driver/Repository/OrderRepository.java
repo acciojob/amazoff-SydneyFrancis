@@ -34,9 +34,9 @@ public class OrderRepository {
 
 
 
-    public int getCountOfUnassignedOrders(){
-        return orders.size();
-    }
+//    public int getCountOfUnassignedOrders(){
+//        return orders.size();
+//    }
     public void deleteOrder(String orderID){
         orders.remove(orderID);
     }
