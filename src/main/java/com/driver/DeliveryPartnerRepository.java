@@ -1,9 +1,8 @@
-package com.driver.Repository;
+package com.driver;
 
-import com.driver.Model.DeliveryPartner;
+import com.driver.DeliveryPartner;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 @Repository

@@ -1,11 +1,10 @@
-package com.driver.Service;
+package com.driver;
 
-import com.driver.Model.DeliveryPartner;
-import com.driver.Model.Order;
-import com.driver.Repository.DeliveryPartnerRepository;
-import com.driver.Repository.OrderRepository;
+import com.driver.DeliveryPartner;
+import com.driver.Order;
+import com.driver.DeliveryPartnerRepository;
+import com.driver.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
