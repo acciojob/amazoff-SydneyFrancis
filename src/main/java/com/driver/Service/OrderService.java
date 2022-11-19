@@ -101,7 +101,7 @@ public class OrderService {
         time = time + Integer.parseInt(s2);
 
         for(Order order : pair.keySet()){
-            if(pair.get(order).equals(partnerId)){
+            if(pair.get(order).getId().equals(partnerId)){
                 if(order.getDeliveryTime()>time){
                     count++;
                 }
@@ -113,18 +113,14 @@ public class OrderService {
     public String getLastDeliveryTimeByPartnerId(String partnerId){
         int max = 0;
         for(Order order : pair.keySet()){
-            if(pair.get(order).equals(partnerId)){
+            if(pair.get(order).getId().equals(partnerId)){
                 max = Math.max(order.getDeliveryTime(),max);
             }
         }
-        String s = String.valueOf(max);
+        int min = max % 60;
+        int hr = max / 60;
         StringBuilder sb = new StringBuilder();
-        for(int i = 0 ; i < s.length() ; i++){
-            sb.append(s.charAt(i));
-            if(i == 1){
-                sb.append(":");
-            }
-        }
+        sb.append(String.valueOf(hr)+":"+String.valueOf(min));
         return  sb.toString();
     }
 
